@@ -11,6 +11,7 @@ const API_KEY = import.meta.env.NEWS_API_KEY;
  * @param{string} params.pageSize
  * @param{string} params.page
  * @param{string} params.apiKey
+ * @param{string} params.urlToImage
  * @returns{Promise<object>}
  */
 
@@ -19,6 +20,7 @@ export default function useNewsApi({
   country = "us",
   q = "",
   pageSize = 10,
+  urlToImage = "",
 } = {}) {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -32,6 +34,9 @@ export default function useNewsApi({
       if (q) {
         url += `&q=${encodeURIComponent(q)}`;
       }
+      if (urlToImage) {
+        url += `&urlToImage=${encodeURIComponent(urlToImage)}`;
+      }
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`HTTP ${response.status} error`);
@@ -43,7 +48,7 @@ export default function useNewsApi({
     } finally {
       setLoading(false);
     }
-  }, [country, category, q, pageSize]);
+  }, [country, category, q, pageSize, urlToImage]);
 
   useEffect(() => {
     fetchNews();
