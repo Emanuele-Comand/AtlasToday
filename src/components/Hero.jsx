@@ -32,7 +32,7 @@ const Hero = () => {
 
   return (
     <div>
-      <style jsx>{`
+      <style>{`
         .swiper-button-next,
         .swiper-button-prev {
           color: #ffffff !important;
