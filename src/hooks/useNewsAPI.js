@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 
 const NEWS_API_BASE_URL = "https://newsapi.org/v2/";
-const API_KEY = import.meta.env.NEWS_API_KEY;
+const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
 /**
  * @param{object} params

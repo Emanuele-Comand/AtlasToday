@@ -1799,6 +1799,11 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
+swiper@^11.2.9:
+  version "11.2.9"
+  resolved "https://registry.npmjs.org/swiper/-/swiper-11.2.9.tgz#e59a3ea7171e59072c772b75b135aeba63a5e9ed"
+  integrity sha512-X4lP396wfb85t5GclSlXmZyeDgcV66JK9+HDfqlk+8wJ5Bp85ZMv2fxu9psulsm22dLQxbnN4kADxK8jXTnSuw==
+
 tabbable@^6.0.1:
   version "6.2.0"
   resolved "https://registry.npmjs.org/tabbable/-/tabbable-6.2.0.tgz#732fb62bc0175cfcec257330be187dcfba1f3b97"
