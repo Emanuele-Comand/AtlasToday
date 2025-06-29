@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/atlas_today_logo.png";
-import Searchbar from "./Searchbar";
 import ToggleTheme from "./ToggleTheme";
 import { useCategoryContext } from "../context/CategoryContext";
 
@@ -8,7 +7,7 @@ const Navbar = () => {
   const { categories, changeCategory } = useCategoryContext();
 
   return (
-    <nav className="navbar bg-white p-4">
+    <nav className="navbar bg-white p-4 fixed top-0 left-0 right-0 z-50">
       <div className="text-slate-700 flex justify-between items-center">
         <Link to="/" className="">
           <img src={logo} alt="logo" className="w-10 h-10" />
@@ -25,7 +24,6 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        <Searchbar />
         <ToggleTheme />
       </div>
     </nav>
