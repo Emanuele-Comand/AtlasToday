@@ -18,10 +18,9 @@ const Hero = () => {
   if (error) return <div>Error: {error}</div>;
   if (!articles || articles.length === 0) return <div>No articles found</div>;
 
-  // Formatta la data per renderla più leggibile
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString("it-IT", {
+    return date.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -82,11 +81,11 @@ const Hero = () => {
                 <p className="text-white text-md text-center z-10 max-w-[500px] pt-4">
                   {article.description}
                 </p>
-                <div className="flex items-center justify-center pt-4 gap-8">
-                  <div className="flex items-center text-white">
+                <div className="flex items-center text-xs justify-center pt-4 gap-8 max-w-[500px]">
+                  <div className="flex items-center text-xs italic text-white">
                     {article.author}
                   </div>
-                  <div className="flex items-center text-white justify-center">
+                  <div className="flex items-center text-sm italic text-white justify-center max-w-[100px]">
                     {article.source.name}
                   </div>
                 </div>
