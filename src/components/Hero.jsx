@@ -4,7 +4,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-
+import Container from "./Container";
 import useNewsApi from "../hooks/useNewsApi";
 
 const Hero = () => {
@@ -74,25 +74,27 @@ const Hero = () => {
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 opacity-50"></div>
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex flex-col items-center justify-center">
-                <h1 className="text-white text-4xl font-semibold text-center z-10">
-                  {article.title}
-                </h1>
-                <p className="text-white text-md text-center z-10 max-w-[500px] pt-4">
-                  {article.description}
-                </p>
-                <div className="flex items-center text-xs justify-center pt-4 gap-8 max-w-[500px]">
-                  <div className="flex items-center text-xs italic text-white">
-                    {article.author}
+              <Container>
+                <div className="flex flex-col items-center justify-center">
+                  <h1 className="text-white text-4xl font-semibold text-center z-10">
+                    {article.title}
+                  </h1>
+                  <p className="text-white text-md text-center z-10 max-w-[500px] pt-4">
+                    {article.description}
+                  </p>
+                  <div className="flex items-center text-xs justify-center pt-4 gap-8 max-w-[500px]">
+                    <div className="flex items-center text-xs italic text-white">
+                      {article.author}
+                    </div>
+                    <div className="flex items-center text-sm italic text-white justify-center max-w-[100px]">
+                      {article.source.name}
+                    </div>
                   </div>
-                  <div className="flex items-center text-sm italic text-white justify-center max-w-[100px]">
-                    {article.source.name}
+                  <div className="flex items-center text-white justify-center pt-4">
+                    {formatDate(article.publishedAt)}
                   </div>
                 </div>
-                <div className="flex items-center text-white justify-center pt-4">
-                  {formatDate(article.publishedAt)}
-                </div>
-              </div>
+              </Container>
             </div>
           </SwiperSlide>
         ))}
