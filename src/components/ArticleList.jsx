@@ -8,7 +8,7 @@ const ArticleList = () => {
   const { articles, loading, error, isInitialLoad } = useNewsApi({
     category: selectedCategory,
     country: "us",
-    pageSize: 16,
+    pageSize: 15,
   });
 
   // Mostra il loading solo al primo caricamento
