@@ -10,7 +10,7 @@ const Navbar = () => {
     <nav className="navbar bg-white dark:bg-gray-900 p-4 fixed top-0 left-0 right-0 z-50 border-b border-gray-200 dark:border-gray-700 transition-colors duration-200">
       <div className="text-slate-700 dark:text-slate-300 flex justify-between items-center">
         <Link to="/" className="">
-          <img src={logo} alt="logo" className="w-10 h-10" />
+          <img src={logo} alt="logo" className="w-10 h-10 rounded-md" />
         </Link>
         <ul className="flex gap-4">
           {categories.map((category) => (
