@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+/* Test diretto per dark mode */
+.test-dark-mode {
+  background-color: red;
+}
+
+.dark .test-dark-mode {
+  background-color: blue;
+}
+
+/* Transizioni globali per il cambio di tema */
+* {
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
 /* Utility per troncare il testo su più righe */
 .line-clamp-2 {
   display: -webkit-box;
@@ -20,4 +34,137 @@
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Stili per il body in dark mode */
+body {
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+.dark body {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+/* Background dell'intero sito */
+html {
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+.dark html {
+  background-color: #111827;
+  min-height: 100vh;
+}
+
+/* Assicura che il root div abbia il background corretto */
+#root {
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+.dark #root {
+  background-color: #111827;
+  min-height: 100vh;
+}
+
+/* Forza la trasparenza del Container in dark mode */
+.dark .bg-transparent {
+  background-color: transparent !important;
+}
+
+/* Regole più specifiche per il Container */
+.dark .max-w-7xl {
+  background-color: transparent !important;
+}
+
+/* Forza la trasparenza su tutti i div del Container in dark mode */
+.dark div[class*="max-w-7xl"] {
+  background-color: transparent !important;
+}
+
+/* Forza la generazione delle classi dark mode */
+.dark .bg-white {
+  background-color: #1f2937 !important;
+}
+
+.dark .text-gray-900 {
+  color: #ffffff !important;
+}
+
+.dark .border-gray-200 {
+  border-color: #374151 !important;
+}
+
+/* Forza il colore bianco su tutti i testi in dark mode */
+.dark .text-gray-600,
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-slate-700,
+.dark .text-slate-300,
+.dark .text-slate-900,
+.dark .text-zinc-700,
+.dark .text-zinc-800,
+.dark .text-zinc-900 {
+  color: #ffffff !important;
+}
+
+/* Eccezioni per testi che devono rimanere grigi chiari (come descrizioni secondarie) */
+.dark .text-gray-300,
+.dark .text-gray-400,
+.dark .text-gray-500 {
+  color: #d1d5db !important;
+}
+
+/* Forza il colore bianco su tutti gli elementi di testo generici in dark mode */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark p,
+.dark span,
+.dark div {
+  color: #ffffff !important;
+}
+
+/* Eccezioni per elementi che devono mantenere colori specifici */
+.dark .text-white,
+.dark .text-blue-400,
+.dark .text-blue-500,
+.dark .text-blue-600,
+.dark .text-green-400,
+.dark .text-green-500,
+.dark .text-green-600,
+.dark .text-red-400,
+.dark .text-red-500,
+.dark .text-red-600,
+.dark .text-yellow-400,
+.dark .text-yellow-500,
+.dark .text-yellow-600 {
+  /* Mantiene i colori originali per elementi colorati */
+}
+
+/* Eccezione specifica per l'icona del sole nel ToggleTheme */
+.dark .material-icons {
+  color: #1f2937 !important;
+}
+
+/* Eccezione per i link della navbar - rimangono sempre bianchi in dark mode */
+.dark .navbar button,
+.dark .navbar .nav-item button {
+  color: #ffffff !important;
+}
+
+.dark .navbar button:hover,
+.dark .navbar .nav-item button:hover {
+  color: #ffffff !important;
+}
+
+/* Forza il colore bianco dell'underline nella navbar in dark mode */
+.dark .navbar button::after,
+.dark .navbar .nav-item button::after {
+  background-color: #ffffff !important;
 }

@@ -16,7 +16,7 @@ const ArticleList = () => {
     return (
       <Container>
         <div className="flex justify-center items-center min-h-[400px]">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-white"></div>
         </div>
       </Container>
     );
@@ -25,7 +25,7 @@ const ArticleList = () => {
   if (error) {
     return (
       <Container>
-        <div className="text-center text-red-500 py-8">
+        <div className="text-center text-red-500 dark:text-red-400 py-8">
           <p className="text-lg">Errore: {error}</p>
           <p className="text-sm mt-2">Riprova più tardi</p>
         </div>
@@ -36,14 +36,14 @@ const ArticleList = () => {
   return (
     <>
       <Container>
-        <h1 className="text-3xl font-bold text-white text-center pt-16 uppercase">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white text-center pt-16 uppercase">
           {selectedCategory}
         </h1>
 
         {/* Indicatore di caricamento sottile per i cambi di categoria */}
         {loading && !isInitialLoad && (
           <div className="flex justify-center py-4">
-            <div className="animate-pulse text-white text-sm">
+            <div className="animate-pulse text-gray-600 dark:text-white text-sm">
               Aggiornamento...
             </div>
           </div>
