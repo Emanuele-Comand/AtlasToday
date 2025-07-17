@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 const NEWS_API_BASE_URL = "https://newsapi.org/v2/";
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
+// CORS proxy fallback se necessario
+const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+
 // Cache per memorizzare i risultati delle API calls
 const cache = new Map();
 
@@ -56,11 +59,23 @@ export default function useNewsApi({
         }
 
         const response = await fetch(url);
+
+        if (response.status === 426) {
+          throw new Error(
+            "API upgrade required. Please check your NewsAPI plan and domain whitelist."
+          );
+        }
+
         if (!response.ok) {
-          throw new Error(`HTTP ${response.status} error`);
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
 
         const data = await response.json();
+
+        if (data.status === "error") {
+          throw new Error(data.message || "NewsAPI error");
+        }
+
         const articlesData = data.articles || [];
 
         // Salva i dati in cache
@@ -69,6 +84,7 @@ export default function useNewsApi({
         setArticles(articlesData);
         setError(null);
       } catch (error) {
+        console.error("NewsAPI Error:", error);
         setError(error.message || "Unknown error");
       } finally {
         setLoading(false);
