@@ -1,14 +1,14 @@
 import ArticleCard from "./ArticleCard";
 import Container from "./Container";
-import useNewsAPI from "../hooks/useNewsAPI";
+import useNewsAPIWithProxy from "../hooks/useGNewsAPI";
 import { useCategoryContext } from "../context/CategoryContext";
 
 const ArticleList = () => {
   const { selectedCategory } = useCategoryContext();
-  const { articles, loading, error, isInitialLoad } = useNewsAPI({
+  const { articles, loading, error, isInitialLoad } = useNewsAPIWithProxy({
     category: selectedCategory,
     country: "us",
-    pageSize: 15,
+    max: 9,
   });
 
   // Mostra il loading solo al primo caricamento

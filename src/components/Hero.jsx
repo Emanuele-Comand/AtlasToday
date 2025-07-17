@@ -5,13 +5,14 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import Container from "./Container";
-import useNewsAPI from "../hooks/useNewsAPI";
+import useNewsAPIWithProxy from "../hooks/useGNewsAPI";
+import ArticleImage from "./ArticleImage";
 
 const Hero = () => {
-  const { articles, loading, error } = useNewsAPI({
+  const { articles, loading, error } = useNewsAPIWithProxy({
     category: "general",
     country: "us",
-    pageSize: 16,
+    max: 5,
   });
 
   if (loading) return <div>Loading...</div>;
@@ -67,8 +68,8 @@ const Hero = () => {
       >
         {articles.map((article, index) => (
           <SwiperSlide key={index} className="relative">
-            <img
-              src={article.urlToImage || "/src/assets/atlas_today_banner.png"}
+            <ArticleImage
+              src={article.urlToImage || article.image}
               alt={`hero-${index}`}
               className="w-full h-[600px] object-cover"
             />

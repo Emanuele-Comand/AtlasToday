@@ -1,13 +1,14 @@
 import Container from "./Container";
 import Button from "./Button";
+import ArticleImage from "./ArticleImage";
 
 const ArticleCard = ({ article }) => {
   return (
     <>
       <div className="flex flex-col h-[500px] bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
         <div className="h-[200px] mb-4">
-          <img
-            src={article.urlToImage || "src/assets/atlas_today_banner.png"}
+          <ArticleImage
+            src={article.urlToImage || article.image}
             alt={article.title}
             className="w-full h-full object-cover rounded-lg"
           />
