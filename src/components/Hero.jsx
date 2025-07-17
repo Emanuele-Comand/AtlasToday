@@ -5,10 +5,10 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import Container from "./Container";
-import useNewsApi from "../hooks/useNewsApi";
+import useNewsAPI from "../hooks/useNewsAPI";
 
 const Hero = () => {
-  const { articles, loading, error } = useNewsApi({
+  const { articles, loading, error } = useNewsAPI({
     category: "general",
     country: "us",
     pageSize: 16,

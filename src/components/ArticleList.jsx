@@ -1,11 +1,11 @@
 import ArticleCard from "./ArticleCard";
 import Container from "./Container";
-import useNewsApi from "../hooks/useNewsApi";
+import useNewsAPI from "../hooks/useNewsAPI";
 import { useCategoryContext } from "../context/CategoryContext";
 
 const ArticleList = () => {
   const { selectedCategory } = useCategoryContext();
-  const { articles, loading, error, isInitialLoad } = useNewsApi({
+  const { articles, loading, error, isInitialLoad } = useNewsAPI({
     category: selectedCategory,
     country: "us",
     pageSize: 15,
