@@ -2,6 +2,7 @@ import ArticleCard from "./ArticleCard";
 import Container from "./Container";
 import useNewsAPIWithProxy from "../hooks/useGNewsAPI";
 import { useCategoryContext } from "../context/CategoryContext";
+import { useEffect, useRef } from "react";
 
 const ArticleList = () => {
   const { selectedCategory } = useCategoryContext();
@@ -10,6 +11,22 @@ const ArticleList = () => {
     country: "us",
     max: 9,
   });
+
+  const categoryTitleRef = useRef(null);
+
+  // Scroll automatico quando cambia categoria
+  useEffect(() => {
+    if (categoryTitleRef.current && !isInitialLoad) {
+      // Calcola la posizione considerando la navbar fissa (circa 80px)
+      const navbarHeight = 80;
+      const elementPosition = categoryTitleRef.current.offsetTop - navbarHeight;
+
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth",
+      });
+    }
+  }, [selectedCategory, isInitialLoad]);
 
   // Mostra il loading solo al primo caricamento
   if (isInitialLoad && loading) {
@@ -36,7 +53,10 @@ const ArticleList = () => {
   return (
     <>
       <Container>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white text-center pt-16 uppercase">
+        <h1
+          ref={categoryTitleRef}
+          className="text-3xl font-bold text-gray-900 dark:text-white text-center pt-16 uppercase"
+        >
           {selectedCategory}
         </h1>
 
