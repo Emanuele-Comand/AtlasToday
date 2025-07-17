@@ -90,6 +90,12 @@ export default function useNewsAPIWithProxy({
           const errorText = await response.text();
           console.error("GNews API Error response:", errorText);
 
+          if (response.status === 401) {
+            throw new Error(
+              "API key non valida. Verifica la configurazione su Cloudflare Pages."
+            );
+          }
+
           if (response.status === 429) {
             throw new Error(
               "Troppe richieste API. Aspetta qualche secondo e riprova."
